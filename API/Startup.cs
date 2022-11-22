@@ -1,3 +1,5 @@
+using API.Helpers;
+using AutoMapper;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +20,14 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Here adding scop for Generic Repository
+            services.AddScoped(typeof(IGenericRepository<>),(typeof(GenericRepository<>)));
+           
+            //Here adding scop for Repository
             services.AddScoped<IProductRepository, ProductRepository>();
+
+            //Auto Mapper
+            services.AddAutoMapper(typeof(MappingProfiles));
 
             services.AddControllers();
              services.AddDbContext<StoreContext>(x => 
@@ -46,6 +55,8 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 
