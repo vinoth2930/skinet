@@ -42,7 +42,7 @@ namespace API.Controllers
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(productParams);
 
-            var countSpec = new ProductsWithTypesAndBrandsSpecification(productParams);
+            var countSpec = new ProductWithFiltersForCountSpecificication(productParams);
 
             var totalItems = await _productsRepo.CountAsync(countSpec);
 
@@ -108,8 +108,8 @@ namespace API.Controllers
 
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
-        {
-            return Ok(await _productTypeRepo.ListAllAsync());
+        { 
+            return Ok(await _productBrandRepo.ListAllAsync());
         }
 
         [HttpGet("types")]

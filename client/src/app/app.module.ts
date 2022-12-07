@@ -6,18 +6,30 @@ import {HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import {CoreModule} from './core/core.module';
+import{ ShopModule } from './shop/shop.module';
+import { HomeModule } from './home/home.module';
+
+
+
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavBarComponent
+    AppComponent
+   
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    CoreModule,
+    //ShopModule,    No longer needed
+    HomeModule
+    
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
