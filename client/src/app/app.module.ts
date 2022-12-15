@@ -8,7 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {CoreModule} from './core/core.module';
 import { HomeModule } from './home/home.module';
-import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { ErrorInterceptor } from './core/interceptors/error,interceptor';
+
+
+
 
 
 
@@ -27,13 +30,17 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     HttpClientModule,
     CoreModule,
     HomeModule
+   
+
+    
+    
 
     
     
    
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
